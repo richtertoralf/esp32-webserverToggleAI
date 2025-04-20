@@ -16,12 +16,14 @@ Mit einem **ESP32-WROOM-32** und einem **KY-005 IR-Sendemodul** kann das **AI Tr
 4. **Mini-Webseite auf dem ESP32** mit einem Button zur Fernbedienungssimulation
 
 ---
+## Versuchsaufbau
+![Screenshot](Steckbrett.jpg)
 
 ## 📡 Weboberfläche
 
 Ein einfacher HTML-Button auf der ESP32-Webseite sendet den AI-Toggle-Befehl 5× hintereinander:
 
-![Screenshot](Steckbrett.jpg)
+![Screenshot](Screenshot-Browser.jpg)
 
 ---
 
