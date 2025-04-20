@@ -17,13 +17,14 @@ Mit einem **ESP32-WROOM-32** und einem **KY-005 IR-Sendemodul** kann das **AI Tr
 
 ---
 ## Versuchsaufbau
+
 ![Screenshot](Steckbrett.jpg)
 
-## 📡 Weboberfläche
+## Weboberfläche
 
 Ein einfacher HTML-Button auf der ESP32-Webseite sendet den AI-Toggle-Befehl 5× hintereinander:
 
-![Screenshot](Screenshot-Browser.jpg)
+<img src="Screenshot_Browser.jpg" alt="Screenshot" style="width: 33%;">
 
 ---
 
