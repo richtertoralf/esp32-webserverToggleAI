@@ -115,9 +115,13 @@ void loop() {
 }
 
 ## Beispielausgabe im Serial Monitor
-```yaml
+```
 ✅ Verbunden! IP-Adresse: 192.168.95.115
 🌍 Webserver gestartet
 🟣 Web: Sende AI Toggle (5×)
 🟣 Web: Sende AI Toggle (5×)
 ```
+## 📦 Projektstatus
+✅ Funktioniert in bis zu 1 m Entfernung zur Kamera  
+✅ AI Tracking lässt sich zuverlässig per WLAN schalten  
+📱 Webseite ist mobilfreundlich und sofort verfügbar  
