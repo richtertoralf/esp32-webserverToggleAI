@@ -113,3 +113,11 @@ void setup() {
 void loop() {
   server.handleClient();
 }
+
+## Beispielausgabe im Serial Monitor
+```yaml
+✅ Verbunden! IP-Adresse: 192.168.95.115
+🌍 Webserver gestartet
+🟣 Web: Sende AI Toggle (5×)
+🟣 Web: Sende AI Toggle (5×)
+```
