@@ -1,23 +1,54 @@
 # esp32-webserverToggleAI
-mit einem ESP32-WROM-32 das AI Tracking einer PTZ-Kamera per Wifi ein- und ausschalten 
-![IRremote](Steckbrett.jpg)
 
-Zuerst  habe ich mit einem KY-022 Infrarot Empfänger Modul die Signale der PTZ-Fernbedienung ausgelesen.
-Diese Signalsequenzen konnte ich dann nutzen, um das AI Tracking meiner HDKATOV PTZ-Kamera vom Smartphone aus per Wifi ein- und auszuschalten.
+Steuerung des AI Trackings einer PTZ-Kamera über WLAN per ESP32.
+
+Mit einem **ESP32-WROOM-32** und einem **KY-005 IR-Sendemodul** kann das **AI Tracking** einer **HDKATOV PTZ-Kamera** durch IR-Signale ein- und ausgeschaltet werden – ganz einfach per Smartphone über WLAN.
+
+---
+
+## 🔧 Funktionsweise
+
+1. **IR-Codes der Fernbedienung auslesen:**  
+   → über **KY-022 IR-Empfänger** am ESP32  
+2. **AI-Toggle-Code extrahieren (0x6A49, Sony-Protokoll)**  
+3. **IR-Sender (KY-005)** mit `sendRaw()` nutzen  
+4. **Mini-Webseite auf dem ESP32** mit einem Button zur Fernbedienungssimulation
+
+---
+
+## 📡 Weboberfläche
+
+Ein einfacher HTML-Button auf der ESP32-Webseite sendet den AI-Toggle-Befehl 5× hintereinander:
+
+![Screenshot](Steckbrett.jpg)
+
+---
+
+## 🧠 Aufbau
+
+| Komponente      | Verbindung                  |
+|------------------|-----------------------------|
+| ESP32            | Micro-USB an Kamera (5 V)   |
+| KY-005 (IR-Modul)| GPIO4 (Signal), GND         |
+| WLAN             | SSID: `skitv`, Passwort: `xxxxx` |
+
+---
+
+## 💻 Webserver-Sketch
 
 ```cpp
 #include <WiFi.h>
 #include <WebServer.h>
 #include <IRremote.hpp>
 
-#define IR_SEND_PIN 4  // GPIO für IR-Senden (z. B. KY-005)
+#define IR_SEND_PIN 4
 
 const char* ssid = "skitv";
-const char* password = "xxxxxx";
+const char* password = "xxxxx";
 
 WebServer server(80);
 
-// === AI Toggle RAW-Daten (0x6A49) ===
+// AI-Tracking Toggle (IR-Raw-Daten, 0x6A49 Sony)
 uint16_t raw_ai_toggle[] = {
   2350,650, 1150,700, 500,650, 550,700,
   1100,700, 500,750, 450,700, 1150,650,
@@ -64,18 +95,13 @@ void setup() {
   delay(200);
 
   IrSender.begin(IR_SEND_PIN, ENABLE_LED_FEEDBACK, USE_DEFAULT_FEEDBACK_LED_PIN);
-
   WiFi.begin(ssid, password);
-  Serial.print("🔌 Verbinde mit WLAN ");
-  Serial.println(ssid);
 
+  Serial.print("🔌 Verbinde mit WLAN "); Serial.println(ssid);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+    delay(500); Serial.print(".");
   }
-
-  Serial.println();
-  Serial.print("✅ Verbunden! IP-Adresse: ");
+  Serial.println(); Serial.print("✅ Verbunden! IP-Adresse: ");
   Serial.println(WiFi.localIP());
 
   server.on("/", handleRoot);
@@ -87,12 +113,3 @@ void setup() {
 void loop() {
   server.handleClient();
 }
-```
-Ausgabe im Serial Monitor:
-```
-19:57:25.565 -> ✅ Verbunden! IP-Adresse: 192.168.95.115
-19:57:25.565 -> 🌍 Webserver gestartet
-20:02:17.468 -> 🟣 Web: Sende AI Toggle (5×)
-20:03:13.617 -> 🟣 Web: Sende AI Toggle (5×)
-20:03:29.604 -> 🟣 Web: Sende AI Toggle (5×)
-```
