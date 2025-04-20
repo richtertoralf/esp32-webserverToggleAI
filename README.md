@@ -4,7 +4,7 @@ Steuerung des AI Trackings einer PTZ-Kamera über WLAN per ESP32.
 
 Mit einem **ESP32-WROOM-32** und einem **KY-005 IR-Sendemodul** kann das **AI Tracking** einer **HDKATOV PTZ-Kamera** durch IR-Signale ein- und ausgeschaltet werden – ganz einfach per Smartphone über WLAN.
 
->> Übrigens: Sollte der Hersteller die AI-Tracking-Funktion doch noch per WebGUI steuerbar machen, wird dieses Projekt als „technische Zwischenlösung mit Lerneffekt“ ganz schnell in Rente geschickt.
+> Übrigens: Sollte der Hersteller die AI-Tracking-Funktion doch noch per WebGUI steuerbar machen, wird dieses Projekt als „technische Zwischenlösung mit Lerneffekt“ ganz schnell in Rente geschickt.
 ---
 
 ## 🔧 Funktionsweise
