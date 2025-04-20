@@ -125,9 +125,9 @@ void loop() {
 ```
 ## 📦 Projektstatus
 ✅ Der Infrot-Sender funktioniert in bis zu 1 m Entfernung zur Kamera  
-✅ Die Stromversorgung des ESP32 und des IR-Senders funktioniert per USB direkt aus der HDKATOV PTZ-Kamera
+✅ Die Stromversorgung des ESP32 und des IR-Senders funktioniert per USB direkt aus der HDKATOV PTZ-Kamera  
 ✅ AI Tracking lässt sich zuverlässig per WLAN schalten  
 📱 Webseite ist mobilfreundlich und sofort verfügbar  
-🛠️ Geplant ist noch ein kleines Gehäuse mit passender Platine – dann wird aus dem Prototyp ein richtiges Mini-Modul zum Ankleben an die Kamera.
-## Oder?
+🛠️ Geplant ist noch ein kleines Gehäuse mit passender Platine – dann wird aus dem Prototyp ein richtiges Mini-Modul zum Ankleben an die Kamera.  
+## Oder..
 🤷‍♂️ Oder der chinesische Hersteller implementiert die Funktion doch noch in die WebGUI – dann ist mein Projekt zwar hinfällig, aber das wäre auch völlig in Ordnung. 😉
